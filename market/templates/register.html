@@ -2,6 +2,28 @@
 
 
 {% block content %}
-   
+    <div class="container">
+        <h1 class="font-weight-normal text-center">
+            Please register for using this website
+        </h1>
+       
+        <form method="POST" class="form-register">
+            {{ form.hidden_tag()}}
+            {{ form.username.label()}}
+            {{ form.username(class='form-control')}}
+
+            {{ form.email.label()}}
+            {{ form.email(class='form-control')}}
+
+            {{ form.password1.label()}}
+            {{ form.password1(class='form-control')}}
+
+            {{ form.password2.label()}}
+            {{ form.password2(class='form-control')}}
+
+            {{form.submit(class='btn btn-block btn-lg btn-primary mt-4')}}
+            
+        </form>
+    </div>
 
 {% endblock %} 
