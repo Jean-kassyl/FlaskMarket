@@ -3,37 +3,44 @@
 {% block content %} 
 
 
-<h1>market page</h1>
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Barcode</th>
-            <th scope="col">Price</th>
-            <th scope="col">Options</th>
-        </tr>
-    </thead>
+<h1 class="lead my-3">User pannel</h1>
+<div class="row p-4">
+    <div class="col-sm-8 ">
+        <h3>Market products</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Barcode</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Options</th>
+                </tr>
+            </thead>
 
-    <tbody>
-        {% for item in items %}
-            <tr>
-                <td> {{item.id}}</td>
-                <td> {{item.name}}</td>
-                <td> {{item.barcode}}</td>
-                <td> {{item.price}}</td>
-                <td>
-                    <button class="btn btn-outline-success btn-sm">
-                        Purchase
-                    </button>
-                    <button class="btn btn-outline-info btn-sm">
-                        More info
-                    </button>
-                </td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
+            <tbody>
+                {% for item in items %}
+                    <tr>
+                        <td> {{item.id}}</td>
+                        <td> {{item.name}}</td>
+                        <td> {{item.barcode}}</td>
+                        <td> {{item.price}}</td>
+                        <td>
+                            <button class="btn btn-outline-success btn-sm">
+                                Purchase
+                            </button>
+                            <button class="btn btn-outline-info btn-sm">
+                                More info
+                            </button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-sm-4">
+        <h3>Owned products</h3>
+    </div>
+</div>
 
 {% endblock %}
