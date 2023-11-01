@@ -36,14 +36,15 @@ def login_page():
     form = LoginForm()
 
     if form.validate_on_submit():
-        attempted_user = Users.query.get(form.username.data).first()
+        attempted_user = Users.query.filter_by(username=form.username.data).first()
+        print(attempted_user, form.username.data)
         if attempted_user:
-            if Users.check_password(form.password.data):
+            if attempted_user.check_password(form.password.data):
                 login_user(attempted_user)
-                flash('You sucessfully login into your account', 'success')
+                flash('You sucessfully login into your account', category='success')
                 return redirect(url_for('market_page'))
             else:
-                flash('bad password, please provide the right one', 'danger')
+                flash('bad password, please provide the right one', category='danger')
         else:
-            flash('bad username, please provide the right one', 'danger')
+            flash('bad username, please provide the right one', category='danger')
     return render_template('login.html', form = form)
