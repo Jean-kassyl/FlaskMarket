@@ -22,6 +22,11 @@
             {{ form.password2(class='form-control')}}
 
             {{form.submit(class='btn btn-block btn-lg btn-primary mt-4')}}
+
+            <div class="checkbox my-2">
+                <h6>Already have an account?</h6>
+                <a href="{{ url_for('login_page')}}" class="btn btn-sm btn-secondary">Login</a>
+            </div>
             
         </form>
     </div>

@@ -3,6 +3,7 @@
 
 {% block content %} 
 <div class="container">
+    <h1 class="text-center">Please login</h1>
     <form method="POST" class="form-signin">
         {{form.hidden_tag()}}
         {{ form.username.label() }}
@@ -12,6 +13,11 @@
         {{form.password(class='form-control')}}
 
         {{ form.submit(class='btn btn-success btn-lg mt-4')}}
+
+        <div class="checkbox my-2">
+            <h6>Do not have an account?</h6>
+            <a href="{{ url_for('register_page')}}" class="btn btn-sm btn-secondary">Register</a>
+        </div>
     </form>
 </div>
 

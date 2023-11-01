@@ -17,6 +17,9 @@ class Users(db.Model):
     def password(self, plain_password):
         self.hash_pass = bcrypt.generate_password_hash(plain_password).decode('utf-8')
 
+    def check_password(self, candidate):
+        return bcrypt.check_password_hash(self.hash_pass, candidate)
+
 
 
 class Item(db.Model):

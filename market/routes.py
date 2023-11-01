@@ -2,6 +2,7 @@ from market import app, db
 from flask import render_template, url_for, redirect, flash
 from market.models import Item, Users
 from market.forms import RegisterForm, LoginForm
+from flask_login import login_user
 
 @app.route("/")
 def Hello_world():
@@ -33,4 +34,16 @@ def register_page():
 @app.route('/login', methods=['GET', 'POST'])
 def login_page():
     form = LoginForm()
+
+    if form.validate_on_submit():
+        attempted_user = Users.query.get(form.username.data).first()
+        if attempted_user:
+            if Users.check_password(form.password.data):
+                login_user(attempted_user)
+                flash('You sucessfully login into your account', 'success')
+                return redirect(url_for('market_page'))
+            else:
+                flash('bad password, please provide the right one', 'danger')
+        else:
+            flash('bad username, please provide the right one', 'danger')
     return render_template('login.html', form = form)
