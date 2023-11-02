@@ -20,16 +20,18 @@
 
             <tbody>
                 {% for item in items %}
+                {% include 'includes/items_modals.html' %}
+                {% include 'includes/purchase_modals.html' %}
                     <tr>
                         <td> {{item.id}}</td>
                         <td> {{item.name}}</td>
                         <td> {{item.barcode}}</td>
                         <td> {{item.price}}</td>
                         <td>
-                            <button class="btn btn-outline-success btn-sm">
+                            <button class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#Modal-purchase-{{item.id}}">
                                 Purchase
                             </button>
-                            <button class="btn btn-outline-info btn-sm">
+                            <button class="btn btn-outline-info btn-sm" data-bs-toggle="modal" data-bs-target="#Modal-MoreInfo-{{item.id}}">
                                 More info
                             </button>
                         </td>
